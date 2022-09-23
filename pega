@@ -60,7 +60,7 @@ def eliminar():
     miConexion=sqlite3.connect("base")
     miCursor=miConexion.cursor()
     if messagebox.askyesno(message="los datos seran eliminados permanetemente",title="Advertencia"):
-      miCursor.execute("DROP TABLE empleado")
+     miCursor.execute("DROP TABLE empleado")
     else:
         pass
 
@@ -77,7 +77,7 @@ def crear():
     limpiarCampos()
     mostrar()
 # dibujar tabla
-tree.tkk.Treeview(height=10, colmns=('#0','#1','#2'))
+tree=ttk.Treeview(height=10,columns=('#0','#1','#2'))
 tree.place(x=0,y=130)
 tree.column('#0', width=180)
 tree.heading('#0', text='ID', anchor=CENTER)
@@ -87,10 +87,36 @@ tree.column('#3', width=180)
 tree.heading('#3', text='Salario', anchor=CENTER)
 
 def seleccionar(event):
-	item=tree.identify('item',event.x,event.y)
+	item=tree.identify('item',event.x, event.y)
 	miId.set(tree.item(item,'text'))
 	miNombre.set(tree.item(item,'Values')[0])
 	miCargo.set(tree.item(item,'Values')[1])
 	miSalario.set(tree.item(item,'Values')[2])
 
-tree.bind("<Double-1",seleccionar)
+tree.bind("<Double -1>", seleccionar)
+
+def actualiza():
+    miConexion=sqlite3.connect("base")
+    miCursor=miConexion.cursor()
+    try:
+        datos=miNombre.get(),miCargo.get(),miSalario.get()
+        miCursor.execute("UPDATE empleado SET NOMBRE=?, CARGO=?,SALARIO=? WHERE ID="+miId.get(),(datos))
+        miConexion.commit()
+    except:
+        messagebox.showwarning("advertencia","error al actualizar")
+        pass
+    limpiarCampos()
+    mostrar()
+
+def borrar():
+    miConexion=sqlite3.connect("base")
+    miCursor=miConexion.cursor()
+    try:
+        if miConexion.askyesno(message="Desea eliminar?",title="Advertencia"):
+            miCursor.execute("DELETE FROM empleado WHERE ID=" + miId.get())
+            miConexion.commit()
+    except:
+        messagebox.showwarning("advertencia","error al borrar")
+        pass
+    limpiarCampos()
+    mostrar()
