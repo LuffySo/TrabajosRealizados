@@ -76,6 +76,29 @@ public class metodos {
         
    }
    
-    
-    
+   public static void promedio(){
+     Scanner entrada=new Scanner(System.in);
+   int nota1,nota2,nota3;
+   
+       System.out.println("ingrese nota 1");
+       nota1=entrada.nextInt();
+       System.out.println("ingrese nota 2");
+       nota2=entrada.nextInt();
+       
+       System.out.println("ingrese nota 3");
+       nota3=entrada.nextInt();
+   
+   
+   
+   int promedio =(nota1+nota2+nota3)/3;
+       System.out.println("Promedio: "+promedio);
+       
+       if(promedio>10.5){
+           System.out.println("Aprobado");
+       }else{
+           System.out.println("Desaprobado");
+       }
+   
+   }
+      
 }
