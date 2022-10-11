@@ -1,20 +1,38 @@
-import mysql.connector
-
-try:
- conexion=mysql.connector.connect(host='localhost',
-                                 user='root',
-                                 passwd='',
-                                 database='ventas')
-
-except Exception as err:
-    print('error al intentar conectar')
-else:
-    print('Conectado exitosamente')
-
-cur01 = conexion.cursor()
-insertar="insert into producto values(2022, 'Pastel', 'S/5')"
-cur01.execute(insertar)
-
-conexion.commit()
-
-conexion.close()
+ Scanner entrada=new Scanner(System.in);
+  
+   
+       System.out.println("ingrese nota 1");
+       
+      int nota1=entrada.nextInt();
+       
+       if(nota1<0 | nota1>20){
+       
+         System.out.println("ingrese nota del 0 al 20");
+         nota1=entrada.nextInt();
+       }
+       
+        System.out.println("ingrese nota 2");
+      int nota2=entrada.nextInt();
+       
+         if(nota2<0 | nota2>20){
+       
+         System.out.println("ingrese nota del 0 al 20");
+         nota2=entrada.nextInt();
+       }
+       
+       System.out.println("ingrese nota 3");
+       int nota3=entrada.nextInt();
+       
+         if(nota3<0 | nota3>20){
+       
+         System.out.println("ingrese nota del 0 al 20");
+         nota3=entrada.nextInt();
+       }
+ 
+   int promedio =(nota1+nota2+nota3)/3;
+       System.out.println("Promedio: "+promedio);
+       
+       if(promedio>10.5)
+           System.out.println("Aprobado");
+       else
+           System.out.println("Desaprobado");
