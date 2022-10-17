@@ -1,14 +1,22 @@
-   try {
-            String cadena;
-            FileReader leer= new FileReader("D:\\proyectosJava\\octubre17\\src\\octubre17\\nota1.txt");
-            
-            BufferedReader b= new BufferedReader(leer);
-            
-            while ((cadena=b.readLine()) !=null) {                
-                System.out.println(cadena);
-            }
-            b.close();
-            
-        } catch (Exception e) {
-            System.out.println("archivo no encontrado");
-        }
+  public Alumno(){
+     
+    teclado= new Scanner(System.in);
+    
+    nombre=JOptionPane.showInputDialog(null,"ingrese su nombre");
+    edad=Integer.parseInt(JOptionPane.showInputDialog(null,"ingrese su edad"));
+       
+    }
+  public void imprimir(){
+ 
+    JOptionPane.showMessageDialog(null,"su nombre es :"+nombre);
+    JOptionPane.showMessageDialog(null,"su edad es :"+edad);
+
+  }
+  public void esMayorEdad(){
+
+     if(edad>=18){
+     JOptionPane.showMessageDialog(null,"es mayor de edad");
+     }else
+         JOptionPane.showMessageDialog(null,"es menor de edad");
+         
+    }
