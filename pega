@@ -1,37 +1,51 @@
 
-package octubre17;
+package examen.java;
 
 import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 
-public class Alumno {
-    
-    private Scanner teclado;
-    private String nombre;
-    private int edad;
-    
-  public Alumno(){
-     
-    teclado= new Scanner(System.in);
-    
-    nombre=JOptionPane.showInputDialog(null,"ingrese su nombre");
-    edad=Integer.parseInt(JOptionPane.showInputDialog(null,"ingrese su edad"));
-       
-    }
-  public void imprimir(){
+public class Main {
+
+
+    public static void main(String[] args) {
+  Scanner entrada=new Scanner(System.in);
+  
+
+  int opcion;
+  String comprador;
  
-    JOptionPane.showMessageDialog(null,"su nombre es :"+nombre);
-    JOptionPane.showMessageDialog(null,"su edad es :"+edad);
-
-  }
-  public void esMayorEdad(){
-
-     if(edad>=18){
-     JOptionPane.showMessageDialog(null,"es mayor de edad");
-     }else
-         JOptionPane.showMessageDialog(null,"es menor de edad");
-         
-    }
+  int numero=0;
+   System.out.println("==============Bienvenido a tienda sideral==================");
+   System.out.println("==============Tienda de frutas ==================");
+   
+   System.out.println("Ingrese su nombre ");
+   comprador=entrada.next();
+   
+   System.out.println(comprador+" Tenemos 3 productos, elija lo que desea comprar"
+                + "\n 1- Manzana con un costo de 5S/ \n 2-Pera con un costo de 7S/ \n 3-papaya con un costo de 10S/");
+                opcion=entrada.nextInt();
+           
+   
+   switch(opcion){
+       
+   
+       case 1: System.out.println("elejio Manzana con un costo de 5S/");
+               break;
+       case 2: System.out.println("elijio Pera con un costo de 7S/");
+               break;
+       case 3: System.out.println("elejio papaya con un costo de 10S/");
+               break;
+       default : System.out.println("solo puede elejir una opcion de 1 a 3");        
+   }
+   if(opcion==1){
+       System.out.println("hola "+comprador+" El costo "+"Total a pagar "+5);
+   }else if(opcion==2){
+       System.out.println("hola "+comprador+" El costo "+"Total a pagar "+7);
+   }else if(opcion==3){
+       System.out.println("hola "+comprador+" El costo "+"Total a pagar "+10);
+   
+   }
+   }
     
 }
+
